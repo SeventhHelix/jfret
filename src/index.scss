@@ -1,0 +1,47 @@
+.string-container {
+    // background-color: red;
+    display: flex;
+    height: 50px;
+}
+
+.fret-selected {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+}
+
+.fret {
+    background-color: blanchedalmond;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 0px 2px 0px 0px;
+
+    // Makes the fret hover work
+    position: relative;
+}
+
+.fret:hover > .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.05;
+    border-radius:30px;
+}
+
+
+.fret-w-0 {
+    width: 10px;
+}
+
+// Need a better calculation for the fret widths
+// Also, consider moving this to the javascript side instead
+$fret_i: 1;
+$fret_i_max: 24;
+@for $fret_i from 1 through $fret_i_max {
+    .fret-w-#{$fret_i} {
+        width: 85px - 60*$fret_i/$fret_i_max;
+    }
+}
