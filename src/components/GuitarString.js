@@ -43,7 +43,9 @@ class GuitarString extends React.Component {
     // TODO: Make it look like an actual string is here
     return (
       <div className="string-container">
-        <span className="string" style={{height: 2 * this.props.string }}></span>
+        <span style={{position: "relative"}}>
+          <span className="string" style={{height: 1 * this.props.string }}></span>
+        </span>
         {
           this.renderFrets()
         }
