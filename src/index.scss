@@ -1,3 +1,18 @@
+.string {
+    background-color: black
+}
+
+.fret-dot {
+    // Works ok but is VERY JANK and should be done properly
+    line-height: 80px;
+    font-size: 102px;
+}
+
+.fret-note {
+    display: table;
+    margin: 0 auto;
+}
+
 .string-container {
     // background-color: red;
     display: flex;
@@ -22,7 +37,8 @@
     position: relative;
 }
 
-.fret:hover > .overlay {
+// .fret:hover > .overlay {
+.fret-overlay {
     width:100%;
     height:100%;
     position:absolute;
@@ -42,6 +58,6 @@ $fret_i: 1;
 $fret_i_max: 24;
 @for $fret_i from 1 through $fret_i_max {
     .fret-w-#{$fret_i} {
-        width: 85px - 60*$fret_i/$fret_i_max;
+        width: 85px - 40*$fret_i/$fret_i_max;
     }
 }

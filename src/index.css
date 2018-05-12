@@ -1,3 +1,14 @@
+.string {
+  background-color: black; }
+
+.fret-dot {
+  line-height: 80px;
+  font-size: 102px; }
+
+.fret-note {
+  display: table;
+  margin: 0 auto; }
+
 .string-container {
   display: flex;
   height: 50px; }
@@ -16,7 +27,7 @@
   border-width: 0px 2px 0px 0px;
   position: relative; }
 
-.fret:hover > .overlay {
+.fret-overlay {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -28,73 +39,73 @@
   width: 10px; }
 
 .fret-w-1 {
-  width: 82.5px; }
+  width: 83.33333px; }
 
 .fret-w-2 {
-  width: 80px; }
+  width: 81.66667px; }
 
 .fret-w-3 {
-  width: 77.5px; }
+  width: 80px; }
 
 .fret-w-4 {
-  width: 75px; }
+  width: 78.33333px; }
 
 .fret-w-5 {
-  width: 72.5px; }
+  width: 76.66667px; }
 
 .fret-w-6 {
-  width: 70px; }
+  width: 75px; }
 
 .fret-w-7 {
-  width: 67.5px; }
+  width: 73.33333px; }
 
 .fret-w-8 {
-  width: 65px; }
+  width: 71.66667px; }
 
 .fret-w-9 {
-  width: 62.5px; }
+  width: 70px; }
 
 .fret-w-10 {
-  width: 60px; }
+  width: 68.33333px; }
 
 .fret-w-11 {
-  width: 57.5px; }
+  width: 66.66667px; }
 
 .fret-w-12 {
-  width: 55px; }
+  width: 65px; }
 
 .fret-w-13 {
-  width: 52.5px; }
+  width: 63.33333px; }
 
 .fret-w-14 {
-  width: 50px; }
+  width: 61.66667px; }
 
 .fret-w-15 {
-  width: 47.5px; }
+  width: 60px; }
 
 .fret-w-16 {
-  width: 45px; }
+  width: 58.33333px; }
 
 .fret-w-17 {
-  width: 42.5px; }
+  width: 56.66667px; }
 
 .fret-w-18 {
-  width: 40px; }
+  width: 55px; }
 
 .fret-w-19 {
-  width: 37.5px; }
+  width: 53.33333px; }
 
 .fret-w-20 {
-  width: 35px; }
+  width: 51.66667px; }
 
 .fret-w-21 {
-  width: 32.5px; }
+  width: 50px; }
 
 .fret-w-22 {
-  width: 30px; }
+  width: 48.33333px; }
 
 .fret-w-23 {
-  width: 27.5px; }
+  width: 46.66667px; }
 
 .fret-w-24 {
-  width: 25px; }
+  width: 45px; }
