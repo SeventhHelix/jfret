@@ -31,6 +31,8 @@ class GuitarString extends React.Component {
             appOnClick={this.props.appOnClick}
             stringNote={this.props.noteBase}
             string={this.props.string}
+
+            selectedFrets={this.props.selectedFrets}
           />
         )
       });
@@ -40,7 +42,6 @@ class GuitarString extends React.Component {
   }
 
   render() {
-    // TODO: Make it look like an actual string is here
     return (
       <div className="string-container">
         <span style={{position: "relative"}}>
@@ -55,13 +56,21 @@ class GuitarString extends React.Component {
 }
 
 GuitarString.propTypes = {
-  numFrets: PropTypes.number,
-  key: PropTypes.string,
+  // string number
+  // key: PropTypes.string,
   string: PropTypes.number,
-  // keyNote: PropTypes.,
-  // keyType: PropTypes.foo,
+
+  // Number of frets, static for now
+  numFrets: PropTypes.number,
+
+  // string note base, eg 'e4'
   noteBase: PropTypes.string,
+
+  // piano note base, eg 20
   pianoBase: PropTypes.number,
+
+  // dict of selected frets
+  selectedFrets: PropTypes.object,
 };
 
 

@@ -16,18 +16,15 @@ class App extends React.Component {
       // Hard part is converting the guitar fret/string -> note value
       // since teoria doesn't support note+step-interval => note
       tuning: [
-        ['e2', 20], 
-        ['a2', 25], 
-        ['d3', 30], 
-        ['g3', 35], 
+        ['e4', 44],
         ['b3', 39], 
-        ['e4', 44]
+        ['g3', 35], 
+        ['d3', 30], 
+        ['a2', 25], 
+        ['e2', 20], 
       ],
       
       selectedFrets: {},
-
-      // keyNote: null,
-      // keyType: null,
 
       numStrings: 6,
       numFrets: 24,
@@ -36,13 +33,17 @@ class App extends React.Component {
   }
 
   clickFret = (e, fret) => {
-    let newSelectedFrets = _.clone(this.state.selectedFrets);
+    // Only select one fret at a time for now -- janky
+    // let newSelectedFrets = _.clone(this.state.selectedFrets);
+
+    // deselect all frets when we click something
+    let newSelectedFrets = {};
 
     if (newSelectedFrets[fret.fretKey()]) {
       delete newSelectedFrets[fret.fretKey()];
     }
     else {
-      newSelectedFrets[fret.fretKey()] = true;
+      newSelectedFrets[fret.fretKey()] = fret;
     }
 
     this.setState({selectedFrets: newSelectedFrets});
@@ -55,13 +56,12 @@ class App extends React.Component {
           numFrets={this.state.numFrets}
           key={n}
           string={n}
-          // keyNote={this.state.keyNote}
-          // keyType={this.state.keyType}
           appOnClick={this.clickFret}
-          // stringNote={this.state.tuning[n]}
 
           noteBase={this.state.tuning[n-1][0]}
           pianoBase={this.state.tuning[n-1][1]}
+
+          selectedFrets={this.state.selectedFrets}
         />
       )
     })

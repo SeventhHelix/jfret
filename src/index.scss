@@ -45,14 +45,17 @@
     position: relative;
 }
 
-// .fret:hover > .overlay {
 .fret-overlay {
     width:100%;
     height:100%;
     position:absolute;
-    background-color:#000;
-    opacity:0.05;
     border-radius:30px;
+}
+
+.fret-rel-interval {
+    top: 10px;
+    display: table;
+    margin: 13px auto;
 }
 
 
