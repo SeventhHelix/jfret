@@ -39,6 +39,7 @@ class Fret extends React.Component {
     let opacityMask = "1";
     let overlayOpacity = "0.05";
     let backgroundColor = "#000";
+    let intervalDisplay = "";
 
     if (!(this.state.selected || this.state.hover)) {
       opacityMask = "0";
@@ -52,11 +53,15 @@ class Fret extends React.Component {
       let selectedNote = selectedFret.props.note;
       relativeInterval = this.props.note.interval(selectedNote);
 
-      // If it's a lower note, still give the higher interval since it's easier to think about
+      // If it's a lower note, still give the higher interval
       if (selectedNote.key() > this.props.note.key()) {
-        selectedNote = relativeInterval.invert();
+        relativeInterval = relativeInterval.invert();
       }
-      relativeInterval = relativeInterval.toString();
+
+      intervalDisplay = relativeInterval.toString();
+
+      // Teoria toString adds -'s for some intervals but not others
+      intervalDisplay = intervalDisplay.replace("-", "");
 
       if (!(this.state.selected || this.state.hover)) {
         // Hide if too far away
@@ -71,25 +76,60 @@ class Fret extends React.Component {
           opacityMask = "1";
         }
 
+        // Teoria uses some awkward naming in some cases that doesn't seem consistent
+        // Re-map them to more common interval names
+        // TODO: A general way of mapping this would be good
+        let intervalNaming = {
+          'A1': 'm2',
+          'A2': 'm3',
+          'A3': 'P4',
+          'A4': 'd5',
+          'AA4': 'P5',
+          'A5': 'm6',
+          'AA5': 'M6',
+          'A6': 'm7',
+
+          'd1': 'm2',
+          'd3': 'M2',
+          'd4': 'M3',
+          'dd4': 'm3',
+          'dd5': 'P4',
+          'd6': 'P5',
+          'd7': 'M6',
+          'd8': 'M7',
+        }
+        
+        intervalDisplay = intervalNaming[intervalDisplay] || intervalDisplay;
+
         // Colour is determined by the interval type
         let colors = {
-          'P1': "#FFFFFF",
-          'm2': "#800000",
-          'M2': "#000",
-          'm3': "#00FFFF",
-          'M3': "#0000FF",
-          'P4': "#800080",
-          'A4': "#800000",
-          'P5': "#FF0000",
-          'A5': "#00FF00",
-          'M6': "#008080",
-          'M7': "#000080",
+          'P1': "#FF0000",
+
+          'm2': "#FF4500",
+          'M2': "#FFA500",
+
+          'm3': "#DAA520",
+          'M3': "#FFFF00",
+
+          'P4': "#ADFF2F",
+
+          'd5': "#000",
+
+          'P5': "#1E90FF",
+
+          'm6': "#4B00CC",
+          'M6': "#4B0082",
+
+          'm7': "#AA82AA",
+          'M7': "#EE82EE",
+
           'P8': "#FFFFFF",
-          'A9': "#000",
-          'm10': "#000",
+
+          // 'A9': "#000",
+          // 'm10': "#000",
         }
-        overlayOpacity = "0.2";
-        backgroundColor = colors[relativeInterval.replace("-", "")];
+        overlayOpacity = "0.5";
+        backgroundColor = colors[intervalDisplay] || "#000";
       }
     }
 
@@ -98,7 +138,7 @@ class Fret extends React.Component {
         <span style={{opacity: opacityMask}}>
           <span style={{backgroundColor: backgroundColor, opacity: overlayOpacity}} className={`fret-overlay`}/>
           <span className={`fret-note`}>{this.props.note.toString(true)}</span>
-          <span className={`fret-rel-interval`}>{relativeInterval}</span>
+          <span className={`fret-rel-interval`}>{intervalDisplay}</span>
         </span>
       )
     }
