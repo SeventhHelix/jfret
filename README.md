@@ -1,7 +1,9 @@
 # JFret
 JFret is a simple guitar tool to help learn guitar chords, scales, and patterns. 
 
-JFret is my first React project, with the intention of building something useful that I'd personally use.
+JFret is my first React project, built with the intention of building something useful that I'd personally use.
+
+You can play around with it here: http://seventhhelix.github.io/jfret
 
 # Features
 Planned features:
