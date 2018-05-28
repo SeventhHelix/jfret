@@ -10,14 +10,12 @@ class Fret extends React.Component {
     // See http://stackoverflow.com/questions/27991366/what-is-the-difference-between-state-and-props-in-react
     // For how to set the callback when we select a fret on click
     this.state = {
-      selected: false,
       hover: false,
     };
   };
 
 
   onClick = (e) => {
-    this.setState({'selected': !this.state['selected']});
     this.props.appOnClick(e, this);
   };
 
@@ -41,7 +39,7 @@ class Fret extends React.Component {
     let backgroundColor = "#000";
     let intervalDisplay = "";
 
-    if (!(this.state.selected || this.state.hover)) {
+    if (!(this.props.selected || this.state.hover)) {
       opacityMask = "0";
     }
 
@@ -63,7 +61,7 @@ class Fret extends React.Component {
       // Teoria toString adds -'s for some intervals but not others
       intervalDisplay = intervalDisplay.replace("-", "");
 
-      if (!(this.state.selected || this.state.hover)) {
+      if (!(this.props.selected || this.state.hover)) {
         // Hide if too far away
         let fretDistance = Math.abs(this.props.fret - selectedFret.props.fret);
         let stringDistance = Math.abs(this.props.string - selectedFret.props.string);
@@ -146,7 +144,7 @@ class Fret extends React.Component {
 
   render() {
     return (
-      <span className={`fret fret-w-${this.props.fret} {this.state.selected ? 'fret-selected' : ''}`} 
+      <span className={`fret fret-w-${this.props.fret} {this.props.selected ? 'fret-selected' : ''}`} 
             onClick={this.onClick}
             onMouseEnter={this.onMouseEnter}
             onMouseLeave={this.onMouseLeave}
@@ -186,6 +184,9 @@ Fret.propTypes = {
 
   // dict of selected frets
   selectedFrets: PropTypes.object,
+
+  // whether or not this fret is selected
+  selected: PropTypes.bool,
 };
 
 

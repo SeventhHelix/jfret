@@ -21,6 +21,7 @@ class GuitarString extends React.Component {
       let frets =  _.map(_.range(this.props.numFrets+1), (n) => {
         let key = 'fret-'+this.props.string+'-'+n;
         let note = teoria.note.fromKey(this.props.pianoBase + n);
+        let fretSelected = key in this.props.selectedFrets;
 
         return (
           <Fret 
@@ -33,6 +34,7 @@ class GuitarString extends React.Component {
             string={this.props.string}
 
             selectedFrets={this.props.selectedFrets}
+            selected={fretSelected}
           />
         )
       });
